@@ -69,7 +69,10 @@ You can find `ORG_ID` / `PROJECT_ID` in Vercel project settings, or by running `
 
 ### 3) Add `DATABASE_URL` in Vercel
 
-Set `DATABASE_URL` in Vercel project environment variables (Production + Preview as you prefer).
+Set these in Vercel project environment variables (Production + Preview as you prefer):
+
+- `DATABASE_URL`: **Supabase pooled/transaction** URL (recommended for serverless runtime)
+- `DIRECT_URL`: **Supabase direct** connection URL (recommended for Prisma migrations)
 
 After that: **just push to `main`** and it will deploy automatically.
 

@@ -30,6 +30,12 @@ jobs:
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
 
+      - name: Install Prisma CLI
+        run: npm i -g prisma@5.22.0
+
+      - name: Run Prisma migrations (Supabase)
+        run: prisma migrate deploy --schema=prisma/schema.prisma
+
       - name: Build
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
         env:
