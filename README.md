@@ -49,6 +49,30 @@ pnpm dev
 
 Open the UI at `http://localhost:3000/subjects`.
 
+## Auto-deploy to Vercel (no local testing)
+
+This repo includes a GitHub Actions workflow that **deploys to Vercel on every push to `main`**.
+
+### 1) Create a Vercel project (one-time)
+
+In Vercel, create a new project connected to this GitHub repo.
+
+### 2) Add GitHub repo secrets (one-time)
+
+In GitHub → repo → Settings → Secrets and variables → Actions, add:
+
+- `VERCEL_TOKEN`
+- `VERCEL_ORG_ID`
+- `VERCEL_PROJECT_ID`
+
+You can find `ORG_ID` / `PROJECT_ID` in Vercel project settings, or by running `vercel env ls` locally (optional).
+
+### 3) Add `DATABASE_URL` in Vercel
+
+Set `DATABASE_URL` in Vercel project environment variables (Production + Preview as you prefer).
+
+After that: **just push to `main`** and it will deploy automatically.
+
 ## Scripts
 
 - `pnpm db:up` / `pnpm db:down`: start/stop Postgres via Docker
